@@ -4,12 +4,13 @@ import com.anhnt.entity.Product;
 import com.anhnt.repository.ProductRepository;
 import com.anhnt.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/admin/product")
 public class ProductController {
     @Autowired
@@ -17,11 +18,10 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-//    @GetMapping("/home")
-//    public String home(Model model) {
-//        model.addAttribute("name", "T1808A");
-//        return "home";
-//    }
+    @GetMapping(path = "/home")
+    public String home() {
+        return "home";
+    }
 
     @GetMapping("/list")
     public String getAllProduct(Model model) {
