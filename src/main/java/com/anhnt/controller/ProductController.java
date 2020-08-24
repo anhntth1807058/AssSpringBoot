@@ -17,7 +17,7 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-//    @GetMapping("/admin")
+//    @GetMapping("/home")
 //    public String home(Model model) {
 //        model.addAttribute("name", "T1808A");
 //        return "home";
@@ -29,13 +29,13 @@ public class ProductController {
         return "list";
     }
 
-    @GetMapping("/addProduct")
+    @GetMapping("/create")
     public String showAddProduct(Model model) {
         model.addAttribute("product", new Product());
         return "create";
     }
 
-    @PostMapping("/addProduct")
+    @PostMapping("/create")
     public String addProduct(@ModelAttribute Product product) {
         return Optional.ofNullable(productService.create(product))
                 .map(t -> "success")
