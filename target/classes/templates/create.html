@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/admin}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>Add Product</h2>
+    <form th:action="@{/addProduct}" th:object="${product}" method="post">
+        <p> Name: <input type="text" th:field="*{name}"/> </p>
+        <p> Price: <input type="text" th:field="*{price}"/> </p>
+        <p> Category id: <input type="text" th:field="*{category.id}"/> </p>
+        <p> <button type="submit" class="btn btn-success">Create </button></p>
+    </form>
+</div>
+
+</body>
+</html>

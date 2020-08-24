@@ -17,16 +17,22 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+//    @GetMapping("/admin")
+//    public String home(Model model) {
+//        model.addAttribute("name", "T1808A");
+//        return "home";
+//    }
+
     @GetMapping("/list")
     public String getAllProduct(Model model) {
         model.addAttribute("products", productService.getAll());
-        return "listProduct";
+        return "list";
     }
 
     @GetMapping("/addProduct")
     public String showAddProduct(Model model) {
         model.addAttribute("product", new Product());
-        return "addProduct";
+        return "create";
     }
 
     @PostMapping("/addProduct")
@@ -41,7 +47,7 @@ public class ProductController {
         Optional<Product> product = productRepository.findById(id);
 
         model.addAttribute("product", product);
-        return "update";
+        return "edit";
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/update/{id}")
@@ -65,6 +71,6 @@ public class ProductController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         productRepository.delete(product);
         model.addAttribute("product", productRepository.findAll());
-        return "listProduct";
+        return "list";
     }
 }
